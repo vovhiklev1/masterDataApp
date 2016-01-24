@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>My AngularJS App</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
+    <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+
+    <script src="bower_components/bootstrap/js/tab.js"></script>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="app.css">
+    <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+    <!-- <link rel="stylesheet" href="bower_components/angular-bootstrap/ui-bootstrap-csp.css">-->
+
+
+    <link rel="stylesheet" href="bower_components/angular-bootstrap-datetimepicker/src/css/datetimepicker.css">
+
+
+</head>
+<body ng-app="myApp" ng-controller="appCtrl">
+<!--<ul class="menu">
+  <li><a href="#/view1">view1</a></li>
+  <li><a href="#/view2">view2</a></li>
+  <li><a href="#/view3">view2</a></li>
+</ul>-->
+<div class="container nav-container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="main-header">Incident Form</h1>
+            <ul class="nav nav-tabs" role="tablist">
+                <li ng-model="generalTab" tab-directive="true" ng-class="generalTab"><a
+                        class="tab-link" href="#view1"
+                        data-toggle="tab">General Information</a>
+                </li>
+                <li ng-model="actionTab" tab-directive="true" ng-class="actionTab"><a
+                        class="tab-link" href="#view2"
+                        data-toggle="tab">Corrective Actions</a></li>
+                <li ng-model="reviewTab" tab-directive="true" ng-class="reviewTab"><a
+                        class="tab-link" href="#view3"
+                        data-toggle="tab">REVIEW and SUBMIT</a></li>
+            </ul>
+            <!--'active'-->
+        </div>
+    </div>
+</div>
+
+
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<div ng-view></div>
+
+
+<!-- In production use:
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+-->
+
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<!--<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>-->
+<script type="text/javascript" src="bower_components/moment/moment.js"></script>
+<script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+
+<script type="text/javascript"
+        src="bower_components/angular-bootstrap-datetimepicker/src/js/datetimepicker.js"></script>
+
+
+<script src="app.js"></script>
+<script src="view1/view1.js"></script>
+<script src="view2/view2.js"></script>
+<script src="view3/view3.js"></script>
+<script src="components/version/version.js"></script>
+<script src="components/version/version-directive.js"></script>
+<script src="components/version/interpolate-filter.js"></script>
+<script src="filters/dateFilter.js"></script>
+<script src="controllers/appCtrl.js"></script>
+<script src="factories/formDataFactory.js"></script>
+<script src="directives/tabDirective.js"></script>
+<script src="controllers/tabCtrl.js"></script>
+<script src="directives/actionTableDirective.js"></script>
+<script src="directives/modalDirective.js"></script>
+
+
+</body>
+</html>

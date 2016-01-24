@@ -1,0 +1,64 @@
+{
+  "fields": [
+    {
+      "CompanyOfReporter": [
+        {
+          "name": "CompanyA"
+        },
+        {
+          "name": "CompanyB"
+        },
+        {
+          "name": "CompanyC"
+        },
+        {
+          "name": "CompanyD"
+        }
+      ]
+    },
+    {
+      "WellNumber": [
+        {
+          "Well-01": [
+            {
+              "Region": "South"
+            },
+            {
+              "State": "Oklahoma"
+            },
+            {
+              "FieldOffice": "Ringwood"
+            }
+          ],
+          "Well-02": [
+            {
+              "Region": "North"
+            },
+            {
+              "State": "Montana"
+            },
+            {
+              "FieldOffice": "Sidney"
+            }
+          ],
+          "Well-03": [
+            {
+              "Region": "North"
+            },
+            {
+              "State": "North Dakota"
+            },
+            {
+              "FieldOffice": "Tioga"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+
+
+
+
+

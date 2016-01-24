@@ -1,0 +1,221 @@
+<div class="container tab-item">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="header-message">
+                <div class="header-message__icon">
+                    <span class="glyphicon--inverse glyphicon glyphicon-alert"></span>
+                </div>
+                <div class="header-message__text">
+                    <p class="header__text">Please complete the form below based on available information. Click an
+                        applicable tab above
+                        to
+                        enter
+                        additional information related to the incident.<br>
+                        When complete click 'REVIEW and SUBMIT' tab above.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+
+            <!--      <form class="form-inline" name="datePickerWithInputForm" novalidate>
+
+                      &lt;!&ndash;  <p>Formatted Date: {{ data.dateDropDownWithInput | date:'yyyy-MM-dd h:mm a' }}</p>
+
+                        <p>
+                                    <span class="label label-warning"
+                                          data-ng-show="datePickerWithInputForm.formDateValue.$dirty">dirty</span>
+                                    <span class="label label-info"
+                                          data-ng-show="datePickerWithInputForm.formDateValue.$pristine">pristine</span>
+                                    <span class="label label-success"
+                                          data-ng-show="datePickerWithInputForm.formDateValue.$valid">valid</span>
+                                    <span class="label label-danger"
+                                          data-ng-show="datePickerWithInputForm.formDateValue.$invalid">invalid</span>
+                        </p>&ndash;&gt;
+
+                      &lt;!&ndash;<p>
+                          <button type="button" class="btn btn-default" data-ng-click="data.dateDropDownWithInput = null">
+                              Set to null
+                          </button>
+                      </p>&ndash;&gt;
+
+                      <div class="dropdown date-input__container">
+                          <a class="dropdown-toggle" id="dropdown4" role="button" data-toggle="dropdown" data-target="#"
+                             href="">
+                              <div class="input-group">
+                                  &lt;!&ndash;<input type="text" class="form-control" name="formDateValue" data-ng-required="true"
+                                         data-ng-model="data.dateDropDownWithInput">&ndash;&gt;
+                                  <input type="text" class="form-control" id="dateTimeIncident" name="formDateValue" data-ng-model="formattedDate"/>
+                                  <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                              </div>
+                          </a>
+                          <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                              <datetimepicker data-ng-model="data.dateDropDownWithInput"
+                                              data-datetimepicker-config="{ startView: 'day', minuteStep: 15 }"></datetimepicker>
+                          </ul>
+                      </div>
+
+                  </form>-->
+
+
+            <form class="form-horizontal" name="datePickerWithInputForm" novalidate>
+                <div class="form-group form-group-sm">
+                    <label class="col-sm-5 control-label" for="dateTimeIncident"><span>*</span>Date and Time of
+                        Incident:</label>
+
+                    <div class="col-sm-5">
+                        <div class="dropdown">
+                            <a class="dropdown-toggle" id="dropdown1" role="button" data-toggle="dropdown"
+                               data-target="#"
+                               href="">
+                                <div class="input-group">
+                                    <!--<input type="text" class="form-control" name="formDateValue" data-ng-required="true"
+                                           data-ng-model="data.dateDropDownWithInput">-->
+                                    <input type="text" class="form-control" id="dateTimeIncident" name="formDateValue"
+                                           data-ng-model="formattedDate"/>
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                </div>
+                            </a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                <datetimepicker data-ng-model="data.dateDropDownWithInput"
+                                                data-datetimepicker-config="{ startView: 'day', minuteStep: 15 }"></datetimepicker>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group form-group-sm">
+                    <label class="col-sm-5 control-label" for="ReportedBy"><span>*</span>Reported by:</label>
+
+                    <div class="col-sm-5">
+                        <input class="form-control" type="text" id="ReportedBy" placeholder="John Doe">
+                    </div>
+                </div>
+                <div class="form-group form-group-sm">
+                    <label class="col-sm-5 control-label" for="CompanyReporter"><span>*</span>Company of
+                        Reporter:</label>
+
+                    <div class="col-sm-5">
+                        <select class="form-control" id="CompanyReporter">
+                            <option disabled selected> -- select --</option>
+                            <option ng-repeat="item in company">{{item.name}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group form-group-sm">
+                    <label class="col-sm-5 control-label" for="ContactNumber"><span>*</span>Contact
+                        Number:</label>
+
+                    <div class="col-sm-5">
+                        <input class="form-control" type="text" id="ContactNumber" placeholder="405.235">
+                    </div>
+                </div>
+                <div class="form-group form-group-sm">
+                    <label class="col-sm-5 control-label" for="SupervisorName"><span>*</span>Supervisor
+                        Name:</label>
+
+                    <div class="col-sm-5">
+                        <input class="form-control" type="text" id="SupervisorName" placeholder="">
+                    </div>
+                </div>
+                <div class="form-group form-group-sm">
+                    <label class="col-sm-5 control-label" for="DescriptionIncident"><span>*</span>High Level
+                        Description of Incident:</label>
+
+                    <div class="col-sm-7">
+                        <textarea class="form-control" id="DescriptionIncident" rows="5"></textarea>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+        <div class="col-md-6">
+            <h3 class="well-form__header">Well Information</h3>
+
+            <form class="form-horizontal" name="WellForm" novalidate>
+                <div class="form-group form-group-sm">
+                    <label class="col-sm-5 control-label" for="WellNumber"><span>*</span>Well Number:</label>
+
+                    <div class="col-sm-5">
+                        <select class="form-control" id="WellNumber"
+                                ng-model="wellNumberSelected" ng-options="item for item in wellNumberKeys"></select>
+                        <!--<select class="form-control" id="WellNumber">
+                            &lt;!&ndash;<option disabled selected> &#45;&#45; select &#45;&#45;</option>&ndash;&gt;
+                            <option ng-model ng-repeat="item in wellNumber">{{item}}</option>
+
+                        </select>-->
+                    </div>
+                </div>
+                <div class="form-group form-group-sm">
+                    <label class="col-sm-5 control-label" for="Region"><span>*</span>Region:</label>
+
+                    <div class="col-sm-5">
+                        <input class="form-control" ng-model="region" type="text" id="Region" disabled>
+                    </div>
+                </div>
+                <div class="form-group form-group-sm">
+                    <label class="col-sm-5 control-label" for="State"><span>*</span>State:</label>
+
+                    <div class="col-sm-5">
+                        <input class="form-control" ng-model="state" type="text" id="State" disabled>
+                    </div>
+                </div>
+                <div class="form-group form-group-sm">
+                    <label class="col-sm-5 control-label" for="FieldOffice"><span>*</span>Field Office:</label>
+
+                    <div class="col-sm-5">
+                        <input class="form-control" ng-model="fieldOffice" type="text" id="FieldOffice" disabled>
+                    </div>
+                </div>
+                <div class="form-group form-group-sm">
+                    <label class="col-sm-5 control-label"><span>*</span>Incident Severity (Check
+                        All that Apply):</label>
+
+                    <div class="col-sm-7">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="checkbox">
+                                    <label><input type="checkbox" ng-model="severity.value1"
+                                                  ng-disabled="severity.enable" value="">Loss of well controll</label>
+                                </div>
+                                <div class="checkbox">
+                                    <label><input type="checkbox" ng-model="severity.value2"
+                                                  ng-disabled="severity.enable" value="">Fatality(ies)</label>
+                                </div>
+                                <div class="checkbox ">
+                                    <label><input type="checkbox" ng-model="severity.value3"
+                                                  ng-disabled="severity.enable" value="" >Hospitalisation or
+                                        medical threatment</label>
+                                </div>
+                                <div class="checkbox ">
+                                    <label><input type="checkbox" ng-model="severity.value4"
+                                                  ng-disabled="severity.enable" value="" >Spill offsite > 50Bbls</label>
+                                </div>
+                                <div class="checkbox ">
+                                    <label><input type="checkbox" ng-model="severity.value5"
+                                                  ng-disabled="severity.enable" value="" >Spill to water, any
+                                        amount</label>
+                                </div>
+                                <div class="checkbox ">
+                                    <label><input type="checkbox" ng-model="severity.value6"
+                                                  ng-disabled="severity.enable" value="" >Property
+                                        damage</label>
+                                </div>
+                            </div>
+                            <div class="panel-footer--color panel-footer">
+                                <div class="checkbox">
+                                    <label><input type="checkbox" ng-model="severity.enable" ng-change="severity.enable" value="">None Apply</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+
