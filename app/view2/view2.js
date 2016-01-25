@@ -34,6 +34,7 @@ angular.module('myApp')
 
         $scope.actionList = [];
         var itemAction = {};
+        var tableLimit = $scope.formData.settingsFormDataS.get().fields[3].tableLimit;
 
         $scope.update = function () {
             $scope.actionList = $scope.actionData.get();
@@ -44,6 +45,13 @@ angular.module('myApp')
                 } else {
                     $scope.emptyList = false;
                 }
+
+                if ($scope.actionList.length >= tableLimit) {
+                    $scope.tableLimit = true;
+                } else {
+                    $scope.tableLimit = false;
+                }
+
             });
             $scope.actionList = $scope.actionData.get();
 
@@ -81,7 +89,8 @@ angular.module('myApp')
                 console.log('edit start true ' + itemIdxEditMode);
                 $scope.modalApply(itemIdxEditMode)
                 $scope.dismiss();
-            };
+            }
+            ;
 
         };
 

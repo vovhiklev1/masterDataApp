@@ -108,8 +108,12 @@
     padding: 7px 15px;
 }
 
+.panel-footer--alert {
+    background-color: #fcf8e3 !important;
+}
+
 .panel {
-  //  margin-bottom: 10px !important;
+/ / margin-bottom : 10 px !important;
 }
 
 .table__header {

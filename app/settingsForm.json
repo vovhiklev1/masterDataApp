@@ -54,6 +54,41 @@
           ]
         }
       ]
+    },
+    {
+      "IncidentSeverity": [
+        {
+          "name": "Loss of well controll",
+          "valueName": "value1"
+        },
+        {
+          "name": "Fatality(ies)",
+          "valueName": "value2"
+        },
+        {
+          "name": "Hospitalisation or medical threatment",
+          "valueName": "value3"
+        },
+        {
+          "name": "Spill offsite > 50Bbls",
+          "valueName": "value4"
+        },
+        {
+          "name": "Spill to water, any amount",
+          "valueName": "value5"
+        },
+        {
+          "name": "Property damage",
+          "valueName": "value6"
+        },
+        {
+          "name": "None Apply",
+          "valueName": "enable"
+        }
+      ]
+    },
+    {
+      "tableLimit": 5
     }
   ]
 }
