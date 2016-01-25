@@ -14,7 +14,7 @@ angular.module('myApp')
     function ($scope, $rootScope, $log, $filter, formDataFactory) {
         'use strict';
 
-        $scope.actionData = formDataFactory.actionListDataS;
+      //  $scope.actionData = formDataFactory.actionListDataS;
         $scope.formData = formDataFactory;
         /* $scope.tabData = formDataFactory.navTabs;
          $scope.tabData.setActiveTab('actionTab');
@@ -35,9 +35,9 @@ angular.module('myApp')
         $scope.actionList = [];
         var itemAction = {};
         var tableLimit = $scope.formData.settingsFormDataS.get().fields[3].tableLimit;
-
+//alert(tableLimit);
         $scope.update = function () {
-            $scope.actionList = $scope.actionData.get();
+            $scope.actionList = $scope.formData.actionListDataS.get();
             $scope.$watch('actionList', function () {
                 //   console.log('$watch $scope.actionList.length before: ' + $scope.actionList.length)
                 if (!$scope.actionList.length) {
@@ -53,7 +53,7 @@ angular.module('myApp')
                 }
 
             });
-            $scope.actionList = $scope.actionData.get();
+            $scope.actionList = $scope.formData.actionListDataS.get();
 
             //console.log('$watch $scope.actionList.length after: ' + $scope.actionList.length)
             //  console.log($scope.actionList)
@@ -62,7 +62,7 @@ angular.module('myApp')
         $scope.update();
 
         $scope.removeRow = function (idx) {
-            $scope.actionData.remove(idx);
+            $scope.formData.actionListDataS.remove(idx);
             $scope.update();
             //console.log('removeRow' + idx);
         };
@@ -97,7 +97,7 @@ angular.module('myApp')
         $scope.addRow = function () {
             $scope.EditMode = false;
             $scope.modalActionDate = new Date();
-            var formFields = $scope.formData.responseDataS.get();
+            var formFields = $scope.formData.settingsFormDataS.get();
             $scope.company = formFields.fields[0].CompanyOfReporter;
 
 
@@ -138,7 +138,7 @@ angular.module('myApp')
             itemAction.company = $scope.modalActionCompany;
             itemAction.date = $scope.modalActionDate;
 
-            $scope.EditMode ? $scope.actionData.edit(idx, itemAction) : $scope.actionData.set(itemAction);
+            $scope.EditMode ? $scope.formData.actionListDataS.edit(idx, itemAction) : $scope.formData.actionListDataS.set(itemAction);
             $scope.update();
             itemAction = {};
             // console.log($scope.actionList);

@@ -202,10 +202,10 @@ angular.module('myApp').controller('GeneralCtrl',
 
             ) {
                 //  console.log('ok');
-                writeChanges('Date and Time of Incident', $scope.incidentDate, true)
+                writeChanges('Date and Time of Incident',$filter('dateISOFilter')($scope.incidentDate) , true)
             } else {
                 //  console.log('err');
-                writeChanges('Date and Time of Incident', $scope.incidentDate, false)
+                writeChanges('Date and Time of Incident', $filter('dateISOFilter')($scope.incidentDate), false)
             }
 
         });
@@ -383,20 +383,20 @@ angular.module('myApp').controller('GeneralCtrl',
                 }
                 ;
             });
-            console.log(checkBoxList.length);
+           // console.log(checkBoxList.length);
             if (checkBoxList.length > 0) {
-                console.log('///');
-                console.log(checkBoxList);
+               // console.log('///');
+               // console.log(checkBoxList);
                 if (checkBoxList.indexOf('None Apply') > -1) {
-                    console.log('one');
+                   // console.log('one');
                     checkBoxList = ['None Apply'];
                     writeChanges('Incident Severity (Check all that Apply)', checkBoxList, true)
                 } else {
-                    console.log('ok');
+               //     console.log('ok');
                     writeChanges('Incident Severity (Check all that Apply)', checkBoxList, true)
                 }
             } else {
-                console.log('err');
+              //  console.log('err');
                    writeChanges('Incident Severity (Check all that Apply)', [], false)
             }
         }, true);

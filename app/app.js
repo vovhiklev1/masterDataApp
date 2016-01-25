@@ -24,9 +24,13 @@ angular.module('myApp', [
                 templateUrl: 'view3/view3.html',
                 controller: 'ReviewCtrl'
             }).
-            otherwise({
+            when('/view4', {
+                templateUrl: 'view4/view4.html',
+                controller: 'newTabCtrl'
+            })
+            /*otherwise({
                 redirectTo: '/view1'
-            });
+            })*/;
     }]);
 
 

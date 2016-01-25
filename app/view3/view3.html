@@ -10,7 +10,7 @@
                         report to the Company.<br>
                         If you wont to change something - return to the Incident Form.</p>
                 </div>
-                <input class="btn btn-default" type="submit" value="Submit">
+                <input class="btn btn-default" ng-click="nawTab()" type="submit" value="Submit">
             </div>
         </div>
     </div>
@@ -20,68 +20,63 @@
 
             <div class="review-list ">
                 <!-- <p class="list-header">Immediate Corrective action(s):</p>-->
-                <table class="table table-striped">
+                <table class="table table-striped ">
                     <thead>
-                    <tr>
-                        <th class="list-header">General Information:</th>
+                    <tr> <!--<td>&nbsp;</td>-->
+                        <th colspan="2" class="list-header">General Information:</th>
+
+                        <!-- <td>&nbsp;</td>-->
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>Date and Time of Incident:</td><td></td>
+                    <tr class="" ng-repeat="(key, value) in generalInfo">
+                        <td class="wid1  text-right">{{value.name}}:</td>
+                        <td class="wid2  td-indent-left text-left">{{value.values}}</td>
                     </tr>
-                    <tr>
-                        <td>Reported by:</td><td></td>
-                    </tr>
-                    <tr>
-                        <td>Company of Reporter:</td><td></td>
-                    </tr>
-                    <tr>
-                        <td>Contact Number:</td><td></td>
-                    </tr>
-                    <tr>
-                        <td>Supervisor Name:</td><td></td>
-                    </tr>
-                    <tr>
-                        <td>High Level Description of Incident:</td><td></td>
-                    </tr>
-                    <tr>
-                        <td>Well Number:</td><td></td>
-                    </tr>
-                    <tr>
-                        <td>Region:</td><td></td>
-                    </tr>
-                    <tr>
-                        <td>State:</td><td></td>
-                    </tr>
-                    <tr>
-                        <td>Field Office:</td><td></td>
-                    </tr>
-                    <tr>
-                        <td>Incident Severity (Check All that Apply):</td><td></td>
-                    </tr>
+                    <!--  <tr>
+                          <td>Date and Time of Incident:</td><td></td>
+                      </tr>
+                      <tr>
+                          <td>Reported by:</td><td></td>
+                      </tr>
+                      <tr>
+                          <td>Company of Reporter:</td><td></td>
+                      </tr>
+                      <tr>
+                          <td>Contact Number:</td><td></td>
+                      </tr>
+                      <tr>
+                          <td>Supervisor Name:</td><td></td>
+                      </tr>
+                      <tr>
+                          <td>High Level Description of Incident:</td><td></td>
+                      </tr>
+                      <tr>
+                          <td>Well Number:</td><td></td>
+                      </tr>
+                      <tr>
+                          <td>Region:</td><td></td>
+                      </tr>
+                      <tr>
+                          <td>State:</td><td></td>
+                      </tr>
+                      <tr>
+                          <td>Field Office:</td><td></td>
+                      </tr>
+                      <tr>
+                          <td>Incident Severity (Check All that Apply):</td><td></td>
+                      </tr>-->
 
                     </tbody>
                     <thead>
                     <tr>
-                        <th class="list-header">General Information General Information:</th>
+                        <th colspan="2" class="list-header">General Information General Information:</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>John</td>
-                        <td>Doe</td>
-                        <td>john@example.com</td>
-                    </tr>
-                    <tr>
-                        <td>Mary</td>
-                        <td>Moe</td>
-                        <td>mary@example.com</td>
-                    </tr>
-                    <tr>
-                        <td>July</td>
-                        <td>Dooley</td>
-                        <td>july@example.com</td>
+                    <tr ng-repeat="(key, value) in correctiveActions">
+                        <td class="wid1  text-right">{{value.name}}:</td>
+                        <td class="wid2  td-indent-left text-left">{{value.values}}</td>
                     </tr>
                     </tbody>
                 </table>

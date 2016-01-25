@@ -7,7 +7,7 @@
  *
  * */
 angular.module('myApp')
-    .factory('formDataFactory', function ($http) {
+    .factory('formDataFactory', function ($http,$filter) {
 
         /*  function Tab() {
          var activeTab = activeTab || false;
@@ -48,8 +48,98 @@ angular.module('myApp')
         };
         var settingsFormData = SettingsFormData();
 
+        function SendData() {
+            var data = {};
+            return {
+                set: function (obj) {
+                    if (obj) {
+                        data = obj;
+                      //  data.countItems = list.length;
+                        console.log('set: ' + data.countItems);
+                    }
+                    ;
+                    // console.log('set: '+ data);
+                },
+                get: function () {
+                    return data;
+                },
+                correctiveActionList : function (submit) {
+                    var correctiveActions = actionListData.get();
+                    var actionCount = Object.keys(correctiveActions).length;
+
+                    var arr = [];
+                    var create = function (name, values) {
+                        if (name) {
+                            var obj = {};
+                            obj.name = name;
+                            obj.values = values;
+                            obj.info = false;
+                            arr.push(obj);
+                            // form.countItems = list.length;
+                            //  console.log('create: ' + arr);
+                        }
+                        ;
+                    };
+                    angular.forEach(correctiveActions, function (val, key) {
+                        // console.log('correctiveActions val------');
+                        // console.log(key);
+                        var idxStr = '';
+                        if (actionCount > 0) {
+                            key += 1;
+                            idxStr = ' (' + key + ')';
+                        }
+                        var date = submit ? $filter('dateISOFilter')(val.date) : $filter('dateFilter')(val.date);
+
+                        create("Description of Corrective Action" + idxStr, val.description, true);
+                        create("Action Taken By (name)" + idxStr, val.name, true);
+                        create("Company" + idxStr, val.company, true);
+                        create("Date" + idxStr, date, true);
+                    });
+                    return arr
+                },
+                prepareSendObj : function(){
+                    var generalFields = fieldsData.getList();
+                    var actionList = sendData.correctiveActionList(true);
+                    //console.log(generalFields)
+                    console.log('5555555555555');
+                    angular.forEach(actionList, function (val, key) {
+                        // console.log(val)
+                        generalFields.push(val);
+                    });
+                    console.log(generalFields);
+
+                    var jsonObj = {};
+                    jsonObj.workflowCreationInformation = {
+                        "workflowTypeName": "Incident Report",
+                        "name": "Report - 2013.05.09"
+                    };
+                    jsonObj.workflowStepUpdateInformation = {
+                        "stepIdOrName": "Initial Step",
+                        "fields": generalFields
+                    };
+
+                    var postData = JSON.stringify(jsonObj)
+                    return postData
+                }
+            }
+        };
+        var sendData = SendData();
+
         function ActionListData() {
-            var list = [];
+            var list = [{
+                company: "CompanyB",
+                date: 'Thu Jan 28 2016 21:57:51 GMT+0200 (Финляндия (зима))',
+                description: "34",
+                name: "3"
+            },
+                {
+                    company: "CompanyA",
+                    date: 'Thu Jan 28 2016 21:57:51 GMT+0200 (Финляндия (зима))',
+                    description: "1212",
+                    name: "6666"
+                }
+            ];
+            // var list = [];
             return {
                 set: function (obj) {
                     if (list) {
@@ -122,15 +212,15 @@ angular.module('myApp')
                         var obj = {};
                         obj.name = name;
                         obj.values = values;
-                        obj.info =false;
+                        obj.info = false;
                         arr.push(obj);
                         // form.countItems = list.length;
-                      //  console.log('create: ' + arr);
+                        //  console.log('create: ' + arr);
                     }
                 }
                 ,
                 getData: function (findKey) {
-                   // console.log('getData ' + findKey)
+                    // console.log('getData ' + findKey)
                     if (findKey) {
                         angular.forEach(arr, function (key, val) {
                             if (key.name == findKey) {
@@ -138,6 +228,10 @@ angular.module('myApp')
                             }
                         });
                     }
+                }
+                ,
+                getList: function () {
+                    return arr;
                 }
                 ,
                 setData: function (findKey, newValue, info) {
@@ -162,10 +256,28 @@ angular.module('myApp')
             loadList: function (url) {
                 return $http.get(url);
             },
+            sendData: function (postData) {
+                var config = {
+                    url: "/Home/PanelGoster",
+                    dataType: "json",
+                    contentType: 'application/json'
+                };
+                $http.post('', config).then(
+                    function (response) {console.log("sendData success  ");
+                        // success callback
+                        window.open("data:text/json," + encodeURIComponent(postData),
+                            "_blank"); // in new tab
+                    },
+                    function (response) {console.log("sendData err  ");
+                        // failure callback
+                    }
+                );
+            },
             settingsFormDataS: settingsFormData,
             actionListDataS: actionListData,
             reportDataS: reportData,
-            fieldsDataS: fieldsData
+            fieldsDataS: fieldsData,
+            sendDataS: sendData
         };
 
         return Service;
