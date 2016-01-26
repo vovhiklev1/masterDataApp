@@ -13,9 +13,11 @@ angular.module('myApp')
             var data = {};
             return {
                 set: function (list) {
+
+
                     if (list) {
                         data = list;
-                        data.countItems = list.length;
+                       // data.countItems = list.length;
                     }
                     ;
                 },

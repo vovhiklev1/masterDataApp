@@ -26,6 +26,5 @@ angular.module('myApp', [
             otherwise({
                 redirectTo: '/view1'
             });
-    }]);
-
+    }])
 
