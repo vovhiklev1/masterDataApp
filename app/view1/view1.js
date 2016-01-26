@@ -7,7 +7,6 @@ angular.module('myApp').controller('GeneralCtrl',
         $scope.formData = formDataFactory;
         $scope.updateView = function () {
             var formFields = $scope.formData.settingsFormDataS.get();
-            console.log(formFields)
             $scope.company = formFields.fields[0].CompanyOfReporter;
             var wellNumber = formFields.fields[1].WellNumber[0];
             $scope.wellNumberKeys = Object.keys(wellNumber);
@@ -95,7 +94,6 @@ angular.module('myApp').controller('GeneralCtrl',
 
         $scope.changeConfig = function changeConfig() {
             var newIndex = validViews.indexOf($scope.config.configureOnConfig.startView) + 1;
-            console.log(newIndex);
             if (newIndex >= validViews.length) {
                 newIndex = 0;
             }

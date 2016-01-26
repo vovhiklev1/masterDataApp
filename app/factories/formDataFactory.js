@@ -86,7 +86,7 @@ angular.module('myApp')
                     var jsonObj = {};
                     jsonObj.workflowCreationInformation = {
                         "workflowTypeName": "Incident Report",
-                        "name": "Report - 2013.05.09"
+                        "name": "Report - " + $filter('date')(new Date(), 'yyyy.MM.dd')  //2013.05.09
                     };
                     jsonObj.workflowStepUpdateInformation = {
                         "stepIdOrName": "Initial Step",
@@ -212,23 +212,21 @@ angular.module('myApp')
                 return $http.get(url);
             },
             sendData: function (postData) {
-                var config = {
-                    url: "/Home/PanelGoster",
-                    dataType: "json",
-                    contentType: 'application/json'
-                };
-                $http.post('', config).then(
-                    function (response) {
-                        // console.log("sendData success  ");
-                        // success callback
-                        window.open("data:text/json," + encodeURIComponent(postData),
-                            "_blank"); // in new tab
-                    },
-                    function (response) {
-                        // console.log("sendData err  ");
-                        // failure callback
-                    }
-                );
+                /*  var config = {
+                 url: "/Home/PanelGoster",
+                 dataType: "json",
+                 contentType: 'application/json'
+                 };*/
+                window.open("data:text/json," + encodeURIComponent(postData),
+                    "_blank");
+                /*  $http.post('', config).then(
+                 function (response) {
+                 // success callback
+                 },
+                 function (response) {
+                 // failure callback
+                 }
+                 );*/
             },
             settingsFormDataS: settingsFormData,
             actionListDataS: actionListData,
