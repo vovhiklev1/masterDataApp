@@ -14,9 +14,6 @@ angular.module('myApp')
             scope: false,
             controller: 'tabCtrl',
             link: function (scope, elem, attr) {
-              //  console.log(scope.activeTab +'  tabDirective link' );
-               // scope.gg = 'hi tabDirective';
-                //scope.activeClass;
             }
         };
 });

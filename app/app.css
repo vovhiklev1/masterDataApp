@@ -1,54 +1,5 @@
-/*
 
-
-.menu {
-  list-style: none;
-  border-bottom: 0.1em solid black;
-  margin-bottom: 2em;
-  padding: 0 0 0.5em;
-}
-
-.menu:before {
-  content: "[";
-}
-
-.menu:after {
-  content: "]";
-}
-
-.menu > li {
-  display: inline;
-}
-
-.menu > li:before {
-  content: "|";
-  padding-right: 0.3em;
-}
-
-.menu > li:nth-child(1):before {
-  content: "";
-  padding: 0;
-}
-
-
-.form-horizontal {
-  width:500px;
-}
-
-.datetime-picker-dropdown {
-
-}
-
-.datetime-picker-dropdown > li.date-picker-menu div > table .btn-default {
-  border: 0;
-}
-
-.datetime-picker-dropdown > li.time-picker-menu div > table {
-
-}
-*/
-
-body{
+body {
     font-size: 12px;
 }
 
@@ -94,10 +45,6 @@ body{
     white-space: normal;
 }
 
-.input-container {
-
-}
-
 .well-form__header {
     text-align: center;
     margin-top: 0;
@@ -114,10 +61,6 @@ body{
 
 .panel-footer--alert {
     background-color: #fcf8e3 !important;
-}
-
-.panel {
- //margin-bottom : 10px !important;
 }
 
 .table__header {
@@ -153,17 +96,6 @@ table {
     padding: 0 15px;
 }
 
-.container {
-/ / margin-left : 1 % !important;
-/ / margin-right : 1 % !important;
-
-}
-
-/*.row{
-    margin-left: 0 !important;
-  margin-right: 0 !important;
-}*/
-
 .button-hidden {
     visibility: hidden;
 }
@@ -196,6 +128,6 @@ tbody tr td {
     padding: 4px !important;
 }
 
-.required{
+.required {
     color: red;
 }

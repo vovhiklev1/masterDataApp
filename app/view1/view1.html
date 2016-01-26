@@ -18,47 +18,6 @@
     </div>
     <div class="row">
         <div class="col-md-6">
-
-            <!--      <form class="form-inline" name="datePickerWithInputForm" novalidate>
-
-                      &lt;!&ndash;  <p>Formatted Date: {{ data.dateDropDownWithInput | date:'yyyy-MM-dd h:mm a' }}</p>
-
-                        <p>
-                                    <span class="label label-warning"
-                                          data-ng-show="datePickerWithInputForm.formDateValue.$dirty">dirty</span>
-                                    <span class="label label-info"
-                                          data-ng-show="datePickerWithInputForm.formDateValue.$pristine">pristine</span>
-                                    <span class="label label-success"
-                                          data-ng-show="datePickerWithInputForm.formDateValue.$valid">valid</span>
-                                    <span class="label label-danger"
-                                          data-ng-show="datePickerWithInputForm.formDateValue.$invalid">invalid</span>
-                        </p>&ndash;&gt;
-
-                      &lt;!&ndash;<p>
-                          <button type="button" class="btn btn-default" data-ng-click="data.dateDropDownWithInput = null">
-                              Set to null
-                          </button>
-                      </p>&ndash;&gt;
-
-                      <div class="dropdown date-input__container">
-                          <a class="dropdown-toggle" id="dropdown4" role="button" data-toggle="dropdown" data-target="#"
-                             href="">
-                              <div class="input-group">
-                                  &lt;!&ndash;<input type="text" class="form-control" name="formDateValue" data-ng-required="true"
-                                         data-ng-model="data.dateDropDownWithInput">&ndash;&gt;
-                                  <input type="text" class="form-control" id="dateTimeIncident" name="formDateValue" data-ng-model="formattedDate"/>
-                                  <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                              </div>
-                          </a>
-                          <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                              <datetimepicker data-ng-model="data.dateDropDownWithInput"
-                                              data-datetimepicker-config="{ startView: 'day', minuteStep: 15 }"></datetimepicker>
-                          </ul>
-                      </div>
-
-                  </form>-->
-
-
             <form class="form-horizontal" name="datePickerWithInputForm" novalidate>
                 <div class="form-group form-group-sm">
                     <label class="col-sm-5 control-label" for="dateTimeIncident"><span>*</span>Date and Time of
@@ -70,8 +29,6 @@
                                data-target="#"
                                href="">
                                 <div class="input-group">
-                                    <!--<input type="text" class="form-control" name="formDateValue" data-ng-required="true"
-                                           data-ng-model="data.dateDropDownWithInput">-->
                                     <input type="text" class="form-control" id="dateTimeIncident" name="formDateValue"
                                            data-ng-model="incidentDate" required>
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
@@ -85,13 +42,12 @@
                     </div>
                 </div>
             </form>
-
-            <form class="form-horizontal" name="generalForm"  novalidate>
+            <form class="form-horizontal" name="generalForm" novalidate>
                 <div class="form-group form-group-sm">
                     <label class="col-sm-5 control-label" for="ReportedBy"><span>*</span>Reported by:</label>
 
                     <div class="col-sm-5">
-                        <input class="form-control" type="text" id="ReportedBy"  ng-model="reporterName" name="name"
+                        <input class="form-control" type="text" id="ReportedBy" ng-model="reporterName" name="name"
                                placeholder="John Doe" required>
                     </div>
                 </div>
@@ -100,7 +56,8 @@
                         Reporter:</label>
 
                     <div class="col-sm-5">
-                        <select class="form-control" id="CompanyReporter" ng-model="reporterCompany" name="company" required>
+                        <select class="form-control" id="CompanyReporter" ng-model="reporterCompany" name="company"
+                                required>
                             <option disabled selected> -- select --</option>
                             <option ng-repeat="item in company">{{item.name}}</option>
                         </select>
@@ -111,7 +68,8 @@
                         Number:</label>
 
                     <div class="col-sm-5">
-                        <input class="form-control" type="text" id="ContactNumber" ng-model="reporterNumber" name="number" placeholder="123.456.7890" required>
+                        <input class="form-control" type="text" id="ContactNumber" ng-model="reporterNumber"
+                               name="number" placeholder="123.456.7890" required>
                     </div>
                 </div>
                 <div class="form-group form-group-sm">
@@ -119,7 +77,8 @@
                         Name:</label>
 
                     <div class="col-sm-5">
-                        <input class="form-control" type="text" id="SupervisorName" ng-model="reporterSupervisor" placeholder="" >
+                        <input class="form-control" type="text" id="SupervisorName" ng-model="reporterSupervisor"
+                               placeholder="">
                     </div>
                 </div>
                 <div class="form-group form-group-sm">
@@ -127,11 +86,11 @@
                         Description of Incident:</label>
 
                     <div class="col-sm-7">
-                        <textarea class="form-control" ng-model="reporterDescription" name="description" id="DescriptionIncident" rows="5" required></textarea>
+                        <textarea class="form-control" ng-model="reporterDescription" name="description"
+                                  id="DescriptionIncident" rows="5" required></textarea>
                     </div>
                 </div>
             </form>
-
         </div>
         <div class="col-md-6">
             <h3 class="well-form__header">Well Information</h3>
@@ -141,20 +100,17 @@
                     <label class="col-sm-5 control-label" for="WellNumber"><span>*</span>Well Number:</label>
 
                     <div class="col-sm-5">
-                        <select class="form-control" id="WellNumber" name="wellNumber" ng-init="wellNumberSelected = wellNumberKeys[0]"
-                                ng-model="wellNumberSelected" ng-options="item for item in wellNumberKeys" required></select>
-                        <!--<select class="form-control" id="WellNumber">
-                            &lt;!&ndash;<option disabled selected> &#45;&#45; select &#45;&#45;</option>&ndash;&gt;
-                            <option ng-model ng-repeat="item in wellNumber">{{item}}</option>
-
-                        </select>-->
+                        <select class="form-control" id="WellNumber" name="wellNumber"
+                                ng-init="wellNumberSelected = wellNumberKeys[0]"
+                                ng-model="wellNumberSelected" ng-options="item for item in wellNumberKeys"
+                                required></select>
                     </div>
                 </div>
                 <div class="form-group form-group-sm">
-                    <label class="col-sm-5 control-label"  for="Region"><span>*</span>Region:</label>
+                    <label class="col-sm-5 control-label" for="Region"><span>*</span>Region:</label>
 
                     <div class="col-sm-5">
-                        <input class="form-control" ng-model="region"  type="text" id="Region" disabled>
+                        <input class="form-control" ng-model="region" type="text" id="Region" disabled>
                     </div>
                 </div>
                 <div class="form-group form-group-sm">
