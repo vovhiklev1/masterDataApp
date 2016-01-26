@@ -193,7 +193,7 @@ angular.module('myApp').controller('GeneralCtrl',
             console.log('write ' + name);
             // $scope.formData.fieldsDataS.getData('Date and Time of Incident');
             $scope.formData.fieldsDataS.setData(name, value, info);
-            $scope.formData.fieldsDataS.getData(name);
+            // $scope.formData.fieldsDataS.getData(name);
         };
 
         $scope.$watch('incidentDate', function () {
@@ -202,17 +202,25 @@ angular.module('myApp').controller('GeneralCtrl',
 
             ) {
                 //  console.log('ok');
-                writeChanges('Date and Time of Incident',$filter('dateISOFilter')($scope.incidentDate) , true)
+                writeChanges('Date and Time of Incident', $scope.incidentDate, true)
             } else {
                 //  console.log('err');
-                writeChanges('Date and Time of Incident', $filter('dateISOFilter')($scope.incidentDate), false)
+                writeChanges('Date and Time of Incident', $scope.incidentDate, false)
             }
-
+            $scope.incidentDate = $scope.formData.fieldsDataS.getData('Date and Time of Incident');
         });
 
+
+        $scope.reporterName = $scope.formData.fieldsDataS.getData('Reported By');
+
         $scope.$watch('reporterName', function () {
+
+            //  $scope.reporterName.$parsers.unshift();
+            //  $scope.reporterName.$formatters.unshift()
+
+
             if ($scope.generalForm.name.$error.required !== true &&
-                $scope.generalForm.name.$dirty &&
+                ($scope.generalForm.name.$dirty || $scope.reporterName.length ) &&
                 $scope.generalForm.name.$invalid !== undefined
             ) {
                 //  console.log('ok');
@@ -222,53 +230,16 @@ angular.module('myApp').controller('GeneralCtrl',
                 writeChanges('Reported By', $scope.reporterName, false)
             }
             ;
-            // var getInfo = $scope.formData.reportDataS.change();
-            // console.log(getInfo)
-
-            /*var arr = [
-             {"name": "A", "values": "a1"},
-             {"name": "B", "values": "b1"}];
-
-             var getData = function (findKey) {
-             if (findKey) {
-             angular.forEach(arr, function (key, val) {
-             // var item = Object.keys(val);
-             // key.name+='e'
-             if (key.name == findKey) {
-             console.log(key.name + ' ' + key.values)
-             }
-             //angular.forEach(arr[key], function (key2, val2) {
-             // })
-             });
-             }
-             };
-             var setData = function (findKey, newValue) {
-             if (findKey) {
-             angular.forEach(arr, function (key, val) {
-             // var item = Object.keys(val);
-             // key.name+='e'
-             if (key.name == findKey) {
-             key.values = newValue;
-             //console.log(key.name + ' ' + key.values)
-             }
-             //angular.forEach(arr[key], function (key2, val2) {
-             // })
-             });
-             }
-             };*/
-
-            // console.log($scope.generalForm.reporterName)
-            //  $scope.formData.fieldsDataS.getData('Date and Time of Incident');
-            //  $scope.formData.fieldsDataS.setData('Date and Time of Incident',$scope.reporterName);
-            //  $scope.formData.fieldsDataS.getData('Date and Time of Incident');
 
 
         });
 
-
+        $scope.reporterCompany = $scope.formData.fieldsDataS.getData('Company of Reporter');
         $scope.$watch('reporterCompany', function () {
+
+
             if ($scope.generalForm.company.$error.required !== true &&
-                $scope.generalForm.company.$dirty &&
+                ($scope.generalForm.company.$dirty || $scope.reporterCompany.length ) &&
                 $scope.generalForm.company.$invalid !== undefined
             ) {
                 //  console.log('ok');
@@ -280,6 +251,7 @@ angular.module('myApp').controller('GeneralCtrl',
             ;
         });
 
+        $scope.reporterNumber = $scope.formData.fieldsDataS.getData('Contact Number');
         $scope.$watch('reporterNumber', function () {
             // var EMAIL_REGEXP = /^[a-z0-9!#$%&'*+/=?^_`{|}~.-]+@example\.com$/i;
             var EMAIL_REGEXP = /^\(?(\d{3})\)?[.-](\d{3})[.-](\d{4})$/;
@@ -298,15 +270,17 @@ angular.module('myApp').controller('GeneralCtrl',
             ;
         });
 
+        $scope.reporterSupervisor = $scope.formData.fieldsDataS.getData('Supervisor Name');
         $scope.$watch('reporterSupervisor', function () {
 
             writeChanges('Supervisor Name', $scope.reporterSupervisor, true)
 
         });
 
+        $scope.reporterDescription = $scope.formData.fieldsDataS.getData('High Level Description of Incident');
         $scope.$watch('reporterDescription', function () {
             if ($scope.generalForm.description.$error.required !== true &&
-                $scope.generalForm.description.$dirty &&
+                ($scope.generalForm.description.$dirty || $scope.reporterDescription.length ) &&
                 $scope.generalForm.description.$invalid !== undefined
             ) {
                 //  console.log('ok');
@@ -318,6 +292,7 @@ angular.module('myApp').controller('GeneralCtrl',
             ;
         });
 
+        $scope.wellNumberSelected = $scope.formData.fieldsDataS.getData('Well Number');
         $scope.$watch('wellNumberSelected', function () {
 
             //  console.log('ok');
@@ -340,12 +315,13 @@ angular.module('myApp').controller('GeneralCtrl',
 
         $scope.severity = {
             value1: false,
-            value2: false,
+            value2: true,
             value3: false,
             value4: false,
             value5: false,
             value6: false
         };
+
         var formFields = $scope.formData.settingsFormDataS.get();
         $scope.severity2 = formFields.fields[2].IncidentSeverity;
 
@@ -354,85 +330,80 @@ angular.module('myApp').controller('GeneralCtrl',
                     var result = '';
                     angular.forEach($scope.severity2, function (key, val) {
                         if (find == key.valueName) {
-                            //  console.log('=====');
-                            //  console.log(key.name + ' ' + key.valueName);
+                            // console.log('=====');
+                            // console.log(key.name + ' ' + key.valueName);
                             result = key.name;
                         }
-                    })
+                    });
+                  ///  console.log('=====');
+                  //  console.log(result);
                     return result
                 }
             }
             ;
 
-
-      //  $scope.checkedSeverity = [];
-        /*$scope.toggleCheck = function (fruit) {
-            if ($scope.checkedFruits.indexOf(fruit) === -1) {
-                $scope.checkedFruits.push(fruit);
-            } else {
-                $scope.checkedFruits.splice($scope.checkedFruits.indexOf(fruit), 1);
+        var searchKey2 = function (find) {
+                if (find) {
+                    var result = '';
+                    angular.forEach($scope.severity2, function (key, val) {
+                        if (find == key.name) {
+                             console.log('=====0000000000000000000==============');
+                             console.log(key.name + ' ' + key.valueName);
+                            $scope.severity[key.valueName] = true;
+                        }
+                    });
+                  //  console.log('=====');
+                   // console.log(result);
+                    // return result
+                }
             }
             ;
-        };*/
+
+
+        var setSeverity = function () {
+            $scope.severity3 = $scope.formData.fieldsDataS.getData('Incident Severity (Check all that Apply)');
+
+
+            angular.forEach($scope.severity3, function (val, key) {
+                searchKey2(val);
+
+                console.log('///------------------00000000000000000000000000000--');
+                console.log(val);
+                // $scope.severity.value3= true;
+            })
+
+        };
+        setSeverity();
 
         $scope.$watch('severity', function (newVal, oldVal) {
             var checkBoxList = [];
             angular.forEach($scope.severity, function (val, kay) {
                 if (val === true) {
                     checkBoxList.push(searchKey(kay));
+
+                    // console.log($scope.severity);
                 }
                 ;
             });
-           // console.log(checkBoxList.length);
+
+            console.log(checkBoxList.length);
             if (checkBoxList.length > 0) {
-               // console.log('///');
-               // console.log(checkBoxList);
+
+                // console.log(checkBoxList);
                 if (checkBoxList.indexOf('None Apply') > -1) {
-                   // console.log('one');
+                    // console.log('one');
                     checkBoxList = ['None Apply'];
                     writeChanges('Incident Severity (Check all that Apply)', checkBoxList, true)
                 } else {
-               //     console.log('ok');
+                    //     console.log('ok');
                     writeChanges('Incident Severity (Check all that Apply)', checkBoxList, true)
                 }
             } else {
-              //  console.log('err');
-                   writeChanges('Incident Severity (Check all that Apply)', [], false)
+                //  console.log('err');
+                writeChanges('Incident Severity (Check all that Apply)', [], false)
             }
         }, true);
 
-
-// $scope.$watch('reporterName', function () {
-
-
-//  console.log($scope.generalForm.reporterName1.$valid);
-//console.log($scope.generalForm.reporterName.$pristine);
-//   console.log($scope.generalForm.reporterName.$error.required);
-//  console.log($scope.generalForm.reporterName.$error);
-
-//  });
-
-        /*  onsole.log($scope.generalForm.$valid = true
-         onsole.log($scope.generalForm.$error.required = false
-         onsole.log($scope.generalForm.$error.minlength = false
-         onsole.log($scope.generalForm.$error.maxlength = false*/
-
-
-        /*  var fields = [
-         {"name": "Date and Time of Incident", "values": $scope.reporterName},
-         {"name": "Reported By", "values": $scope.data.dateDropDownWithInput},
-         {"name": "Company of Reporter", "values": ["CompanyA"]},
-         {"name": "Contact Number", "values": ["405.234.9751"]},
-         {"name": "Supervisor Name", "values": ["Aaron Moore"]},
-         {"name": "High Level Description of Incident", "values": ["description"]},
-         {"name": "Well Number", "values": ["Well-01"]},
-         {"name": "Region", "values": ["South"]},
-         {"name": "State", "values": ["Oklahoma"]},
-         {"name": "Field Office", "values": ["Ringwood"]},
-         {
-         "name": "Incident Severity (Check all that Apply)",
-         "values": ["Loss of well control", "Spill offsite > 50 Bbls"]
-         }]*/
 
     }
 )

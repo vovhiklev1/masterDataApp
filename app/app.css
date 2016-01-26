@@ -195,3 +195,7 @@ td {
 tbody tr td {
     padding: 4px !important;
 }
+
+.required{
+    color: red;
+}

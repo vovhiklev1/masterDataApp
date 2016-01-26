@@ -220,14 +220,18 @@ angular.module('myApp')
                 }
                 ,
                 getData: function (findKey) {
+                    var result ='';
                     // console.log('getData ' + findKey)
                     if (findKey) {
                         angular.forEach(arr, function (key, val) {
                             if (key.name == findKey) {
-                                console.log(key.name + ' ' + key.values + ' ' + key.info)
+                                result =key.values;
+                                console.log(key.name + ' ' + key.values + ' ' + key.info+ '------------------')
                             }
                         });
-                    }
+
+
+                    } return result
                 }
                 ,
                 getList: function () {
@@ -235,12 +239,13 @@ angular.module('myApp')
                 }
                 ,
                 setData: function (findKey, newValue, info) {
-
                     if (findKey) {
                         angular.forEach(arr, function (key, val) {
                             if (key.name == findKey) {
                                 key.values = newValue;
                                 key.info = info;
+
+
                             }
                         });
                     }

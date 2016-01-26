@@ -141,7 +141,7 @@
                     <label class="col-sm-5 control-label" for="WellNumber"><span>*</span>Well Number:</label>
 
                     <div class="col-sm-5">
-                        <select class="form-control" id="WellNumber" name="wellNumber"
+                        <select class="form-control" id="WellNumber" name="wellNumber" ng-init="wellNumberSelected = wellNumberKeys[0]"
                                 ng-model="wellNumberSelected" ng-options="item for item in wellNumberKeys" required></select>
                         <!--<select class="form-control" id="WellNumber">
                             &lt;!&ndash;<option disabled selected> &#45;&#45; select &#45;&#45;</option>&ndash;&gt;

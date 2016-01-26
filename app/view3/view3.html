@@ -10,7 +10,7 @@
                         report to the Company.<br>
                         If you wont to change something - return to the Incident Form.</p>
                 </div>
-                <input class="btn btn-default" ng-click="nawTab()" type="submit" value="Submit">
+                <input class="btn btn-default" ng-click="nawTab()" ng-disabled="!formValid" type="submit" value="Submit">
             </div>
         </div>
     </div>
@@ -31,7 +31,7 @@
                     <tbody>
                     <tr class="" ng-repeat="(key, value) in generalInfo">
                         <td class="wid1  text-right">{{value.name}}:</td>
-                        <td class="wid2  td-indent-left text-left">{{value.values}}</td>
+                        <td class="wid2  td-indent-left text-left"><span ng-if="value.info">{{value.values}}</span><span class="required" ng-if="!value.info">This field is requided</span></td>
                     </tr>
                     <!--  <tr>
                           <td>Date and Time of Incident:</td><td></td>
