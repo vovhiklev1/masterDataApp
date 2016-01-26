@@ -27,10 +27,10 @@ angular.module('myApp', [
             when('/view4', {
                 templateUrl: 'view4/view4.html',
                 controller: 'newTabCtrl'
-            })
-            /*otherwise({
+            }).
+            otherwise({
                 redirectTo: '/view1'
-            })*/;
+            });
     }]);
 
 

@@ -29,50 +29,7 @@ angular.module('myApp')
         console.log('v3 ----');
 
 
-        /*  $scope.correctiveActions = $scope.formData.actionListDataS.get();
-         console.log('v3 ----correctiveActions');
-         console.log($scope.correctiveActions);
-         console.log('v3 ----correctiveActions');*/
 
-
-        /* var correctiveActionList = function (submit) {
-         $scope.correctiveActions = $scope.formData.actionListDataS.get();
-         var actionCount = Object.keys($scope.correctiveActions).length;
-         //  console.log('actionCount ------' + actionCount);
-         //  console.log(actionCount);
-
-         var arr = [];
-         var create = function (name, values) {
-         if (name) {
-         var obj = {};
-         obj.name = name;
-         obj.values = values;
-         obj.info = false;
-         arr.push(obj);
-         // form.countItems = list.length;
-         //  console.log('create: ' + arr);
-         }
-         ;
-         };
-
-         angular.forEach($scope.correctiveActions, function (val, key) {
-         // console.log('correctiveActions val------');
-         // console.log(key);
-         var idxStr = '';
-         if (actionCount > 0) {
-         key += 1;
-         idxStr = ' (' + key + ')';
-         }
-         var date = submit ? $filter('dateISOFilter')(val.date) : $filter('dateFilter')(val.date);
-
-         create("Description of Corrective Action" + idxStr, val.description, true);
-         create("Action Taken By (name)" + idxStr, val.name, true);
-         create("Company" + idxStr, val.company, true);
-         create("Date" + idxStr, date, true);
-         });
-         return arr
-         };*/
-        // console.log('++++');
         $scope.correctiveActions = $scope.formData.sendDataS.correctiveActionList(false);
         // console.log($scope.correctiveActions);
 
@@ -81,26 +38,7 @@ angular.module('myApp')
 
             $scope.formData.sendData($scope.formData.sendDataS.prepareSendObj());
 
-            /*var generalFields = $scope.formData.fieldsDataS.getList();
-             var actionList = $scope.formData.sendDataS.correctiveActionList(true);
-             //console.log(generalFields)
-             console.log('5555555555555');
-             angular.forEach(actionList, function (val, key) {
-             // console.log(val)
-             generalFields.push(val);
-             });
-             console.log(generalFields);
 
-             var jsonObj = {};
-             jsonObj.workflowCreationInformation = {
-             "workflowTypeName": "Incident Report",
-             "name": "Report - 2013.05.09"
-             };
-             jsonObj.workflowStepUpdateInformation = {
-             "stepIdOrName": "Initial Step",
-             "fields": []
-             };*/
-            //console.log(m)
         };
         //  $scope.submitBtn();
 
@@ -115,9 +53,9 @@ angular.module('myApp')
             var fields = $scope.formData.fieldsDataS.getList();
             var fieldsValid = true;
             angular.forEach(fields, function (val, key) {
-                console.log('========+++++====== ' + val.name + val.info)
+              //  console.log('========+++++====== ' + val.name + val.info)
                 if (!val.info) {
-                    console.log('==============' + val.name + val.info)
+                 //   console.log('==============' + val.name + val.info)
                     fieldsValid = false;
                 }
 

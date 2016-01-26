@@ -7,7 +7,7 @@
  *
  * */
 angular.module('myApp')
-    .factory('formDataFactory', function ($http,$filter) {
+    .factory('formDataFactory', function ($http, $filter) {
 
         /*  function Tab() {
          var activeTab = activeTab || false;
@@ -54,7 +54,7 @@ angular.module('myApp')
                 set: function (obj) {
                     if (obj) {
                         data = obj;
-                      //  data.countItems = list.length;
+                        //  data.countItems = list.length;
                         console.log('set: ' + data.countItems);
                     }
                     ;
@@ -63,7 +63,7 @@ angular.module('myApp')
                 get: function () {
                     return data;
                 },
-                correctiveActionList : function (submit) {
+                correctiveActionList: function (submit) {
                     var correctiveActions = actionListData.get();
                     var actionCount = Object.keys(correctiveActions).length;
 
@@ -71,12 +71,20 @@ angular.module('myApp')
                     var create = function (name, values) {
                         if (name) {
                             var obj = {};
+                            var tempArr=[];
                             obj.name = name;
-                            obj.values = values;
-                            obj.info = false;
+                            if (submit) {
+                                tempArr.push(values)
+                                obj.values = tempArr;
+                            } else {
+                                obj.values = values;
+                            }
+                            if (!submit) {
+                                obj.info = false;
+                            }
                             arr.push(obj);
                             // form.countItems = list.length;
-                            //  console.log('create: ' + arr);
+
                         }
                         ;
                     };
@@ -97,16 +105,19 @@ angular.module('myApp')
                     });
                     return arr
                 },
-                prepareSendObj : function(){
-                    var generalFields = fieldsData.getList();
+                prepareSendObj: function () {
+                    var generalFields = fieldsData.getListForSend();
                     var actionList = sendData.correctiveActionList(true);
                     //console.log(generalFields)
-                    console.log('5555555555555');
+                    // console.log('5555555555555--');
+                    // console.log(generalFields);
+
                     angular.forEach(actionList, function (val, key) {
                         // console.log(val)
+
                         generalFields.push(val);
                     });
-                    console.log(generalFields);
+
 
                     var jsonObj = {};
                     jsonObj.workflowCreationInformation = {
@@ -118,7 +129,7 @@ angular.module('myApp')
                         "fields": generalFields
                     };
 
-                    var postData = JSON.stringify(jsonObj)
+                    var postData = angular.toJson(jsonObj);
                     return postData
                 }
             }
@@ -215,27 +226,42 @@ angular.module('myApp')
                         obj.info = false;
                         arr.push(obj);
                         // form.countItems = list.length;
-                        //  console.log('create: ' + arr);
+                        // console.log('-----------------8888888888-----------');
+                        // console.log(obj);
                     }
                 }
                 ,
                 getData: function (findKey) {
-                    var result ='';
+                    var result = '';
                     // console.log('getData ' + findKey)
                     if (findKey) {
                         angular.forEach(arr, function (key, val) {
                             if (key.name == findKey) {
-                                result =key.values;
-                                console.log(key.name + ' ' + key.values + ' ' + key.info+ '------------------')
+                                result = key.values;
+
                             }
                         });
 
 
-                    } return result
+                    }
+                    return result
                 }
                 ,
                 getList: function () {
                     return arr;
+                },
+                getListForSend: function () {
+                    var result = [];
+
+                    angular.forEach(arr, function (val, key) {
+                        var obj = {};
+                        var tempArr = [];
+                        obj.name = val.name;
+                        tempArr.push(val.values);
+                        obj.values = tempArr;
+                        result.push(obj);
+                    });
+                    return result;
                 }
                 ,
                 setData: function (findKey, newValue, info) {
@@ -268,12 +294,14 @@ angular.module('myApp')
                     contentType: 'application/json'
                 };
                 $http.post('', config).then(
-                    function (response) {console.log("sendData success  ");
+                    function (response) {
+                        console.log("sendData success  ");
                         // success callback
                         window.open("data:text/json," + encodeURIComponent(postData),
                             "_blank"); // in new tab
                     },
-                    function (response) {console.log("sendData err  ");
+                    function (response) {
+                        console.log("sendData err  ");
                         // failure callback
                     }
                 );
